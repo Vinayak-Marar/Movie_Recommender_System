@@ -6,12 +6,19 @@ import csv
 
 # # Read the .dat file and write to a new .csv file
 
-def convert_to_csv(dat_file_path,csv_file_path,delimiter_char=","):
+def convert_to_csv(dat_file_path,csv_file_path,delimiter_char="::"):
 
-    with open(dat_file_path, 'r') as dat_file, open(csv_file_path, 'w', newline='') as csv_file:
-        reader = csv.reader(dat_file, delimiter=delimiter_char)
-        writer = csv.writer(csv_file)
-        writer.writerows(reader)
+    with open(dat_file_path, 'r', encoding='latin-1') as infile, \
+        open(csv_file_path, 'w', newline='', encoding='utf-8') as outfile:
+        
+        writer = csv.writer(outfile)
+        
+        for line in infile:
+            # Strip whitespace and split by the double colon
+            parts = line.strip().split(delimiter_char)
+            
+            # Write the parts as a standard CSV row
+            writer.writerow(parts)
 
     print(f"Successfully converted {dat_file_path} to {csv_file_path}")
 
