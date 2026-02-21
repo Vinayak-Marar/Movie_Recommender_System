@@ -1,43 +1,49 @@
-🎬 Hybrid Movie Recommendation System
+# 🎬 Hybrid Movie Recommendation System
 
 A Hybrid Movie Recommender built using:
 
-Content-Based Filtering (Genre similarity)
+- Content-Based Filtering (Genre Similarity)
+- Demographic Filtering (Age + Occupation)
+- Popularity-Based Scoring
+- Streamlit Web Application
 
-Demographic Filtering (Age + Occupation)
+---
 
-Popularity-Based Scoring
+## 📌 Project Overview
 
-Streamlit Web Application
+This system recommends movies to a **new user** based on:
 
-📌 Project Overview
+- 🎯 Preferred Genres  
+- 👤 Age Group  
+- 💼 Occupation  
 
-This system recommends movies to a new user based on:
+The model combines three different recommendation strategies:
 
-🎯 Preferred Genres
+1. **Genre Similarity Score**
+   - Manual cosine similarity using one-hot encoded genres  
 
-👤 Age Group
+2. **Demographic Score**
+   - Average ratings from users with the same age group and occupation  
 
-💼 Occupation
+3. **Popularity Score**
+   - Overall average rating of each movie  
 
-It combines three components:
+---
 
-Genre Similarity Score (Cosine-based manual similarity)
+## 🧠 Final Scoring Formula
 
-Demographic Score (Average ratings from similar users)
+Final Score =  
+0.7 * Genre Score +  
+0.1 * Demographic Score +  
+0.2 * Popularity Score  
 
-Popularity Score (Average movie rating overall)
+Movies are ranked based on this hybrid weighted score.
 
-Final Score:
+---
 
-Final Score = 
-0.7 * Genre Score +
-0.1 * Demographic Score +
-0.2 * Popularity Score
+## 📂 Project Structure
 
-
-📂 Project Structure
-
+```
 movie-recommender/
 │
 ├── main.py
@@ -50,23 +56,45 @@ movie-recommender/
 │   └── users.csv
 │
 └── requirements.txt
+```
+
+---
 
 
-🔧 Installation
+## 🔧 Installation
 
-Clone the repository
+### 1️⃣ Clone the Repository
 
-git clone <your-repo-url>
+```
+git clone <your-repository-url>
 cd movie-recommender
+```
 
-Install dependencies
+### 2️⃣ Install Dependencies
 
+```
 pip install -r requirements.txt
+```
 
-If you don’t have requirements.txt, install manually:
+If you don’t have a `requirements.txt` file, install manually:
 
+```
 pip install streamlit pandas numpy
-▶️ Run the App
-streamlit run main.py
+```
 
-The app will open in your browser.
+---
+
+## ▶️ Run the Application
+
+```
+streamlit run main.py
+```
+
+The Streamlit app will open automatically in your browser.
+
+---
+
+## 👨‍💻 Author
+
+Vinayak  
+Machine Learning Project  
